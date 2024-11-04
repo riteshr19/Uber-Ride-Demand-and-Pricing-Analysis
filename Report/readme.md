@@ -106,4 +106,3 @@ This analysis provides valuable insights into Uber rideshare data, highlighting 
 ## License
 
 This project is licensed under the MIT License.
-```
