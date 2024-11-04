@@ -1,57 +1,102 @@
-# Uber-Ride-Demand-and-Pricing-Analysis
+# Uber Rideshare Analysis
 
-# Project Proposal
+This project analyzes Uber rideshare data to understand various factors affecting ride pricing, distances, demand patterns, and outlier behavior. It employs exploratory data analysis, statistical techniques, outlier detection, geospatial visualization, and clustering.
 
-## Description of the Project
-This project aims to analyze Uber ride data to uncover patterns and trends. We strive to understand how factors such as time of day, weather conditions, and location affect Uber ride demand and pricing. This analysis will help predict ride demand, optimize pricing strategies, and improve overall operational efficiency for ride-sharing services.
+---
 
-## Clear Goal(s)
-- **Predict Ride Demand**: Successfully predict the number of Uber rides based on time of day, weather conditions, and location.
-- **Optimize Pricing**: Identify key factors influencing Uber ride pricing and develop a model to optimize pricing strategies.
-- **Operational Insights**: Provide actionable insights to improve operational efficiency, such as optimal driver allocation and peak demand times.
+## Table of Contents
+- [Dataset Information](#dataset-information)
+- [Installation](#installation)
+- [Analysis Workflow](#analysis-workflow)
+- [Findings](#findings)
+- [Visualizations](#visualizations)
+- [Future Improvements](#future-improvements)
+- [Conclusion](#conclusion)
+- [License](#license)
 
-## Data Collection
-- **Data Source**: We will use publicly available Uber ride datasets from sources like Kaggle, Uber's open data portal, and other relevant data repositories.
-- **Data Collection Method**:
-  - **Historical Ride Data**: Download historical ride information, including timestamps, pickup and drop-off locations, ride duration, and fare amounts.
-  - **Weather Data**: Collect weather data corresponding to the ride timestamps from APIs like OpenWeatherMap or Weather.com.
-  - **Geospatial Data**: Use geospatial data to map ride locations to specific neighborhoods or regions.
+---
 
-## Data Cleaning
-- **Handling Missing Values**: Identify and handle missing values in the datasets by imputing them or removing incomplete records.
-- **Removing Duplicates**: Ensure no duplicate records exist in the datasets.
-- **Data Consistency**: Standardize data formats, such as date and time formats, to ensure consistency across the datasets.
+## Dataset Information
+The dataset used for this analysis contains data on 693,071 Uber rides, with 57 columns detailing information such as:
+- **Ride details**: price, distance, cab type, source, destination.
+- **Geolocation**: latitude, longitude.
+- **Time and Date**: timestamp, hour, day, month.
+- **Weather**: temperature, humidity, wind speed, visibility.
 
-## Feature Extraction
-- **Time-based Features**: Extract features such as hour of the day, day of the week, and month from the ride timestamps.
-- **Weather Features**: Include weather-related features like temperature, precipitation, and weather conditions (e.g., sunny, rainy).
-- **Geospatial Features**: Extract features related to pickup and drop-off locations, such as neighborhood, distance traveled, and ride duration.
+## Installation
+To replicate this analysis, clone the repository and ensure the following dependencies are installed:
 
-## Data Modeling
-- **Modeling Techniques**:
-  - **Clustering**: Use clustering algorithms like K-means to group similar rides based on features such as location and time.
-  - **Linear Regression**: Fit a linear regression model to predict ride demand based on time and weather conditions.
-  - **Decision Trees and Random Forest**: Use decision trees and Random Forest models to predict ride pricing based on multiple features.
-  - **XGBoost**: Implement XGBoost to improve ride demand and pricing prediction accuracy.
-  - **Deep Learning**: Explore deep learning methods like neural networks for complex pattern recognition and prediction tasks.
+bash
+pip install pandas numpy matplotlib seaborn scikit-learn statsmodels plotly folium
+Place the dataset (rideshare_kaggle.csv.zip) in the root directory.
+Analysis Workflow
 
-## Data Visualization
-- **Visualization Techniques**:
-  - **Bar Plots**: Create bar plots to show the distribution of rides across different times of the day, days of the week, and locations.
-  - **Scatter Plots**: Use scatter plots to visualize the relationship between ride demand pricing and other features.
-  - **Interactive t-SNE Plots**: Implement interactive t-SNE plots to visualize high-dimensional data and identify clusters.
-  - **Heatmaps**: Generate heatmaps to show ride density and demand across different regions.
-  - **Strip Plots**: Use strip plots to show the distribution of categorical data, such as ride types and payment methods.
+1. Data Exploration
+Basic Info: Loaded the dataset, inspected its shape, columns, and data types.
+Missing Values: Found missing values in the price column, which were later imputed using median values by hour and distance.
+Data Preview: Displayed initial rows to confirm data integrity.
+2. Univariate Analysis
+Distribution of Price and Distance: Histogram plots for price and distance revealed their frequency distributions.
+Outlier Detection for Price: Detected outliers using Z-score, removing 5,114 rows with extreme price values.
+3. Bivariate Analysis
+Price vs Distance: Scatterplot visualized the relationship, showing a positive correlation.
+Day of Week vs Price: Analyzed price variations across different days (if applicable).
+Hourly Price Patterns: Analyzed price across times of day (e.g., morning, afternoon).
+4. Multivariate Analysis
+Correlation Analysis: Computed correlations among numerical features, visualized in a heatmap to identify highly correlated attributes.
+Variance Inflation Factor (VIF): Tested for multicollinearity among features like distance and fare per mile.
+5. Outlier Detection
+Local Outlier Factor (LOF) and Z-score: Used these methods to identify and handle outliers in price and distance.
+6. Clustering Analysis
+KMeans Clustering: Clustered rides into 3 categories based on price and distance.
+7. Geospatial Analysis
+Mapping Ride Locations: Created an interactive map of ride locations using folium to identify popular areas.
+Price vs Distance by Cab Type: Used plotly to show relationships between price, distance, and cab type.
+Findings
 
-## Test Plan
-- **Data Split**: Withholding 20% of the data for testing to evaluate model performance.
-- **Training and Testing**: Train models on data collected in November and test on data collected in December to ensure temporal consistency.
-- **Evaluation Metrics**: Use metrics like Mean Absolute Error (MAE), Mean Squared Error (MSE), and Root Mean Squared Error (RMSE) to evaluate model performance. Use R-squared and feature importance scores to assess model accuracy and interpretability.
+Pricing Trends: Rides with greater distances typically cost more, showing a clear positive correlation between distance and price.
+Outliers: Significant price outliers were detected and removed; clustering reveals distinct groups in terms of price and distance.
+Geolocation Insights: Mapping rides indicates popular pickup/drop-off locations.
+Time-Based Trends: Pricing fluctuates based on time of day and day of the week.
+Visualizations
 
-## Group Information
-- **Group Size**: 2 Students
-- **Student 1**: Ritesh Rana
-- **Student 2**: Sai Yasasvi Dutt Malladi
+Price Distribution - Shows the frequency of different prices.  
+![Price Distribution](img/1.png)
 
-## Notes
-The project's goals are clearly defined at this stage, and the data collection methods are outlined. The modeling and visualization aspects will evolve as we learn more techniques in class and see what the data looks like.
+Distance Distribution - Displays the frequency of different ride distances.  
+![Distance Distribution](img/2.png)
+
+Price vs Distance - Scatterplot indicating the relationship.  
+![Price vs Distance](img/3.png)
+
+Boxplots - Visualize price variation across time/day.  
+![Boxplots](img/4.png)
+
+Heatmap - Correlation heatmap of numerical features.  
+![Heatmap](img/5.png)
+
+Clustering Analysis - Visualization of clusters in price and distance.  
+![Clustering Analysis](img/6.png)
+
+Map - Interactive map marking each ride’s geolocation.  
+[Open Map](img/ride_map.html)
+
+
+Future Improvements
+
+Feature Engineering: Create additional features based on timestamps (e.g., rush hours, weekends).
+Advanced Machine Learning: Implement regression models to predict ride prices.
+Enhanced Outlier Detection: Try alternative outlier detection methods.
+Customer Insights: Segment rides based on cab type and user behavior.
+Conclusion
+
+This analysis provides valuable insights into Uber rideshare data, highlighting price determinants and identifying patterns across geolocation and time. The findings could help in demand prediction and price optimization.
+License
+
+This project is licensed under the MIT License.
+
+
+
+
+
+
