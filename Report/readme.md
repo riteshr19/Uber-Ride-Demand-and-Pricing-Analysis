@@ -34,7 +34,7 @@ Place the dataset (`rideshare_kaggle.csv.zip`) in the root directory.
 
 ## Analysis Workflow
 
-1. **Data Exploration**
+1. **Data Processing**
    - **Basic Info**: Loaded the dataset, inspected its shape, columns, and data types.
    - **Missing Values**: Found missing values in the `price` column, which were later imputed using median values by hour and distance.
    - **Data Preview**: Displayed initial rows to confirm data integrity.
