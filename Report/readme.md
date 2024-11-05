@@ -1,4 +1,4 @@
-# Uber Rideshare Analysis
+oh # Uber Rideshare Analysis
 
 This project analyzes Uber rideshare data to understand various factors affecting ride pricing, distances, demand patterns, and outlier behavior. It employs exploratory data analysis, statistical techniques, outlier detection, geospatial visualization, and clustering.
 
@@ -72,22 +72,22 @@ Place the dataset (`rideshare_kaggle.csv.zip`) in the root directory.
 ## Visualizations
 
 - **Price Distribution** - Shows the frequency of different prices.  
-  ![Price Distribution](img/1.png)
+  ![Price Distribution](img/6.png)
 
 - **Distance Distribution** - Displays the frequency of different ride distances.  
-  ![Distance Distribution](img/2.png)
+  ![Distance Distribution](img/5.png)
 
 - **Price vs Distance** - Scatterplot indicating the relationship.  
-  ![Price vs Distance](img/3.png)
+  ![Price vs Distance](img/4.png)
 
 - **Boxplots** - Visualize price variation across time/day.  
-  ![Boxplots](img/4.png)
+  ![Boxplots](img/3.png)
 
 - **Heatmap** - Correlation heatmap of numerical features.  
-  ![Heatmap](img/5.png)
+  ![Heatmap](img/2.png)
 
 - **Clustering Analysis** - Visualization of clusters in price and distance.  
-  ![Clustering Analysis](img/6.png)
+  ![Clustering Analysis](img/1.png)
 
 - **Map** - Interactive map marking each ride’s geolocation.  
   [Open Map](img/ride_map.html)
