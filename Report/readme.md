@@ -2,7 +2,7 @@
 
 This project analyzes Uber rideshare data to understand factors affecting ride pricing, distances, demand patterns, and outlier behavior. It employs exploratory data analysis, statistical techniques, outlier detection, geospatial visualization, and clustering. Regression models, including Decision Trees and Random Forest regressions, are used to evaluate and predict ride prices.
 
-# [Link to our Presenation](#https://nmimseduin-my.sharepoint.com/:p:/g/personal/rana_ritesh028_nmims_edu_in/EXHrMU_JT_BHlF_eAUJtwvcB4mlhb2l4kdP8Fbvti7SyYg?e=cTeuHA)
+# [Link to our Presentation](https://nmimseduin-my.sharepoint.com/:p:/g/personal/rana_ritesh028_nmims_edu_in/EXHrMU_JT_BHlF_eAUJtwvcB4mlhb2l4kdP8Fbvti7SyYg?e=cTeuHA)
 
 ---
 
