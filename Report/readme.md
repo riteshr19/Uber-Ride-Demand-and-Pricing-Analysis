@@ -1,6 +1,8 @@
-oh # Uber Rideshare Analysis
+# Uber Rideshare Analysis
 
-This project analyzes Uber rideshare data to understand various factors affecting ride pricing, distances, demand patterns, and outlier behavior. It employs exploratory data analysis, statistical techniques, outlier detection, geospatial visualization, and clustering.
+This project analyzes Uber rideshare data to understand factors affecting ride pricing, distances, demand patterns, and outlier behavior. It employs exploratory data analysis, statistical techniques, outlier detection, geospatial visualization, and clustering. Regression models, including Decision Trees and Random Forest regressions, are used to evaluate and predict ride prices.
+
+# [Link to our Presenation](#https://nmimseduin-my.sharepoint.com/:p:/g/personal/rana_ritesh028_nmims_edu_in/EXHrMU_JT_BHlF_eAUJtwvcB4mlhb2l4kdP8Fbvti7SyYg?e=cTeuHA)
 
 ---
 
@@ -8,6 +10,7 @@ This project analyzes Uber rideshare data to understand various factors affectin
 - [Dataset Information](#dataset-information)
 - [Installation](#installation)
 - [Analysis Workflow](#analysis-workflow)
+- [Modeling and Evaluation](#modeling-and-evaluation)
 - [Findings](#findings)
 - [Visualizations](#visualizations)
 - [Future Improvements](#future-improvements)
@@ -35,8 +38,8 @@ Place the dataset (`rideshare_kaggle.csv.zip`) in the root directory.
 ## Analysis Workflow
 
 1. **Data Processing**
-   - **Basic Info**: Loaded the dataset, inspected its shape, columns, and data types.
-   - **Missing Values**: Found missing values in the `price` column, which were later imputed using median values by hour and distance.
+   - **Basic Info**: Loaded the dataset and inspected its shape, columns, and data types.
+   - **Missing Values**: Found missing values in the `price` column, later imputed using median values by hour and distance.
    - **Data Preview**: Displayed initial rows to confirm data integrity.
 
 2. **Univariate Analysis**
@@ -45,7 +48,7 @@ Place the dataset (`rideshare_kaggle.csv.zip`) in the root directory.
 
 3. **Bivariate Analysis**
    - **Price vs Distance**: Scatterplot visualized the relationship, showing a positive correlation.
-   - **Day of Week vs Price**: Analyzed price variations across different days (if applicable).
+   - **Day of Week vs Price**: Analyzed variations across different days (if applicable).
    - **Hourly Price Patterns**: Analyzed price across times of day (e.g., morning, afternoon).
 
 4. **Multivariate Analysis**
@@ -62,12 +65,46 @@ Place the dataset (`rideshare_kaggle.csv.zip`) in the root directory.
    - **Mapping Ride Locations**: Created an interactive map of ride locations using `folium` to identify popular areas.
    - **Price vs Distance by Cab Type**: Used `plotly` to show relationships between price, distance, and cab type.
 
+---
+
+## Modeling and Evaluation
+
+### 1. Linear Regression Model
+   - **Training RMSE**: 7.777
+   - **Testing RMSE**: 7.773
+   - **Training R²**: 0.257
+   - **Testing R²**: 0.258
+
+### 2. Decision Tree Regressor
+   - **Training RMSE**: 0.0
+   - **Testing RMSE**: 0.132
+   - **Training R²**: 1.0
+   - **Testing R²**: 0.999
+   - **Evaluation**: High performance on training and testing sets suggests overfitting due to perfect training fit.
+
+### 3. Random Forest Regressor with Hyperparameter Tuning
+   - **Best Parameters**: Determined using RandomizedSearchCV.
+   - **Training RMSE**: 0.029
+   - **Testing RMSE**: 0.078
+   - **Training R²**: 0.999
+   - **Testing R²**: 0.999
+   - **Cross-Validation RMSE**: Mean RMSE of 0.081 with a standard deviation of 0.015 across folds, indicating strong generalizability.
+
+### Model Selection
+   - **Best Model**: Random Forest Regressor, balancing performance and generalizability.
+   
+   ### Feature Importance
+   - **Analysis**: Visualized feature importance from the Random Forest model, identifying distance and cab type as significant contributors.
+
+---
+
 ## Findings
 
 - **Pricing Trends**: Rides with greater distances typically cost more, showing a clear positive correlation between distance and price.
 - **Outliers**: Significant price outliers were detected and removed; clustering reveals distinct groups in terms of price and distance.
 - **Geolocation Insights**: Mapping rides indicates popular pickup/drop-off locations.
 - **Time-Based Trends**: Pricing fluctuates based on time of day and day of the week.
+- **Best Model**: The Random Forest Regressor outperformed other models' accuracy and generalizability, making it the most effective for this analysis.
 
 ## Visualizations
 
@@ -95,13 +132,13 @@ Place the dataset (`rideshare_kaggle.csv.zip`) in the root directory.
 ## Future Improvements
 
 - **Feature Engineering**: Create additional features based on timestamps (e.g., rush hours, weekends).
-- **Advanced Machine Learning**: Implement regression models to predict ride prices.
+- **Advanced Machine Learning**: Implement additional machine learning models to improve predictive power.
 - **Enhanced Outlier Detection**: Try alternative outlier detection methods.
 - **Customer Insights**: Segment rides based on cab type and user behavior.
 
 ## Conclusion
 
-This analysis provides valuable insights into Uber rideshare data, highlighting price determinants and identifying patterns across geolocation and time. The findings could help in demand prediction and price optimization.
+This analysis provides valuable insights into Uber rideshare data, highlighting price determinants and identifying patterns across geolocation and time. The findings, supported by a well-performing Random Forest model, could help predict demand and optimize prices.
 
 ## License
 
