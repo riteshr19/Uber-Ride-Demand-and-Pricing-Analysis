@@ -1,4 +1,4 @@
-Project Proposal
+## Project Proposal
 
 ## Description of the Project
 This project aims to analyze Uber ride data to uncover patterns and trends. We strive to understand how factors such as time of day, weather conditions, and location affect Uber ride demand and pricing. This analysis will help predict ride demand, optimize pricing strategies, and improve overall operational efficiency for ride-sharing services.
