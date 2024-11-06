@@ -48,3 +48,4 @@ The goal of this project is to analyze Uber ride data to uncover patterns
 
 ## Notes
 The project's goals are clearly defined at this stage, and the data collection methods are outlined. The modeling and visualization aspects will evolve as we learn more techniques in class and see what the data looks like.
+
