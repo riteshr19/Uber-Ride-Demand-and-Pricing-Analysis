@@ -21,7 +21,7 @@ This project aims to analyze Uber ride data to uncover patterns and trends. We s
 - **Data Consistency**: Standardize data formats, such as date and time formats, to ensure consistency across the datasets.
 
 ## Feature Extraction
- @@ -32,26 +32,26 @@ The goal of this project is to analyze Uber ride data to uncover patterns and tr
+The goal of this project is to analyze Uber ride data to uncover patterns
   - **Clustering**: Use clustering algorithms like K-means to group similar rides based on features such as location and time.
   - **Linear Regression**: Fit a linear regression model to predict ride demand based on time and weather conditions.
   - **Decision Trees and Random Forest**: Use decision trees and Random Forest models to predict ride pricing based on multiple features.
