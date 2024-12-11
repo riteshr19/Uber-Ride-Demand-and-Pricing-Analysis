@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uber Price Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Uber Price Prediction</h1>
+        <form action="/predict" method="post">
+            <label for="hour">Hour:</label>
+            <input type="text" id="hour" name="hour" value="{{ form_data.hour if form_data else '' }}" required>
+            
+            <label for="cab_name">Cab Type:</label>
+            <select id="cab_name" name="cab_name" required>
+                <option value="Black SUV" {{ 'selected' if form_data and form_data.cab_name == 'Black SUV' else '' }}>Black SUV</option>
+                <option value="Lux" {{ 'selected' if form_data and form_data.cab_name == 'Lux' else '' }}>Lux</option>
+                <option value="Shared" {{ 'selected' if form_data and form_data.cab_name == 'Shared' else '' }}>Shared</option>
+                <option value="Taxi" {{ 'selected' if form_data and form_data.cab_name == 'Taxi' else '' }}>Taxi</option>
+                <option value="UberPool" {{ 'selected' if form_data and form_data.cab_name == 'UberPool' else '' }}>UberPool</option>
+                <option value="UberX" {{ 'selected' if form_data and form_data.cab_name == 'UberX' else '' }}>UberX</option>
+            </select>
+            
+            <label for="hour_bin">Hour Bin:</label>
+            <select id="hour_bin" name="hour_bin" required>
+                <option value="Night" {{ 'selected' if form_data and form_data.hour_bin == 'Night' else '' }}>Night</option>
+                <option value="Morning" {{ 'selected' if form_data and form_data.hour_bin == 'Morning' else '' }}>Morning</option>
+                <option value="Afternoon" {{ 'selected' if form_data and form_data.hour_bin == 'Afternoon' else '' }}>Afternoon</option>
+                <option value="Evening" {{ 'selected' if form_data and form_data.hour_bin == 'Evening' else '' }}>Evening</option>
+            </select>
+            
+            <label for="is_weekend">Is Weekend:</label>
+            <select id="is_weekend" name="is_weekend" required>
+                <option value="0" {{ 'selected' if form_data and form_data.is_weekend == '0' else '' }}>No</option>
+                <option value="1" {{ 'selected' if form_data and form_data.is_weekend == '1' else '' }}>Yes</option>
+            </select>
+            
+            <label for="source">Source:</label>
+            <select id="source" name="source" required>
+                <option value="Back Bay" {{ 'selected' if form_data and form_data.source == 'Back Bay' else '' }}>Back Bay</option>
+                <option value="Beacon Hill" {{ 'selected' if form_data and form_data.source == 'Beacon Hill' else '' }}>Beacon Hill</option>
+                <option value="Boston University" {{ 'selected' if form_data and form_data.source == 'Boston University' else '' }}>Boston University</option>
+                <option value="Fenway" {{ 'selected' if form_data and form_data.source == 'Fenway' else '' }}>Fenway</option>
+                <option value="Financial District" {{ 'selected' if form_data and form_data.source == 'Financial District' else '' }}>Financial District</option>
+                <option value="Haymarket Square" {{ 'selected' if form_data and form_data.source == 'Haymarket Square' else '' }}>Haymarket Square</option>
+                <option value="North End" {{ 'selected' if form_data and form_data.source == 'North End' else '' }}>North End</option>
+                <option value="North Station" {{ 'selected' if form_data and form_data.source == 'North Station' else '' }}>North Station</option>
+                <option value="Northeastern University" {{ 'selected' if form_data and form_data.source == 'Northeastern University' else '' }}>Northeastern University</option>
+                <option value="South Station" {{ 'selected' if form_data and form_data.source == 'South Station' else '' }}>South Station</option>
+                <option value="Theatre District" {{ 'selected' if form_data and form_data.source == 'Theatre District' else '' }}>Theatre District</option>
+                <option value="West End" {{ 'selected' if form_data and form_data.source == 'West End' else '' }}>West End</option>
+            </select>
+            
+            <label for="destination">Destination:</label>
+            <select id="destination" name="destination" required>
+                <option value="Back Bay" {{ 'selected' if form_data and form_data.destination == 'Back Bay' else '' }}>Back Bay</option>
+                <option value="Beacon Hill" {{ 'selected' if form_data and form_data.destination == 'Beacon Hill' else '' }}>Beacon Hill</option>
+                <option value="Boston University" {{ 'selected' if form_data and form_data.destination == 'Boston University' else '' }}>Boston University</option>
+                <option value="Fenway" {{ 'selected' if form_data and form_data.destination == 'Fenway' else '' }}>Fenway</option>
+                <option value="Financial District" {{ 'selected' if form_data and form_data.destination == 'Financial District' else '' }}>Financial District</option>
+                <option value="Haymarket Square" {{ 'selected' if form_data and form_data.destination == 'Haymarket Square' else '' }}>Haymarket Square</option>
+                <option value="North End" {{ 'selected' if form_data and form_data.destination == 'North End' else '' }}>North End</option>
+                <option value="North Station" {{ 'selected' if form_data and form_data.destination == 'North Station' else '' }}>North Station</option>
+                <option value="Northeastern University" {{ 'selected' if form_data and form_data.destination == 'Northeastern University' else '' }}>Northeastern University</option>
+                <option value="South Station" {{ 'selected' if form_data and form_data.destination == 'South Station' else '' }}>South Station</option>
+                <option value="Theatre District" {{ 'selected' if form_data and form_data.destination == 'Theatre District' else '' }}>Theatre District</option>
+                <option value="West End" {{ 'selected' if form_data and form_data.destination == 'West End' else '' }}>West End</option>
+            </select>
+            
+            <label for="day_of_week">Day of Week (optional):</label>
+            <input type="text" id="day_of_week" name="day_of_week" value="{{ form_data.day_of_week if form_data else '' }}">
+            
+            <button type="submit">Predict Price</button>
+        </form>
+        <form action="/clear" method="post">
+            <button type="submit">Clear</button>
+        </form>
+        {% if prediction_text %}
+            <h2>{{ prediction_text }}</h2>
+        {% endif %}
+    </div>
+</body>
+</html>
