@@ -6,6 +6,11 @@ This project aims to predict Uber ride prices based on various factors such as t
 The project comprises a Flask-based web application that allows users to input trip details and receive a predicted price. The backend leverages a trained machine learning model, and the application design is structured to ensure an intuitive user experience.
 
 ---
+## Demo Video
+
+[Link to Our Presentation of the Full Project](https://drive.google.com/file/d/1glSSmxnHiSf1k5PgNgd-lr7-tMbaJwVD/view?usp=drive_link)
+
+
 
 ## Features
 1. **Price Prediction for Uber Rides**:
